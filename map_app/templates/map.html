@@ -1,0 +1,1442 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    
+        <script>
+            L_NO_TOUCH = false;
+            L_DISABLE_3D = false;
+        </script>
+    
+    <style>html, body {width: 100%;height: 100%;margin: 0;padding: 0;}</style>
+    <style>#map {position:absolute;top:0;bottom:0;right:0;left:0;}</style>
+    <script src="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.js"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.0/css/all.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/python-visualization/folium/folium/templates/leaflet.awesome.rotate.min.css"/>
+    
+            <meta name="viewport" content="width=device-width,
+                initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+            <style>
+                #map_81ff8ba50940c07804318b411da27821 {
+                    position: relative;
+                    width: 100.0%;
+                    height: 100.0%;
+                    left: 0.0%;
+                    top: 0.0%;
+                }
+                .leaflet-container { font-size: 1rem; }
+            </style>
+        
+</head>
+<body>
+    
+    
+     <div style="position: fixed; 
+     bottom: 50px; left: 50px; width: 200px; height: 200px; 
+     background-color: white; border:2px solid grey; z-index:9999; font-size:14px;
+     ">&nbsp; <b>Corresponding Salesman</b> <br>
+     &nbsp; <i class="fa fa-map-marker fa-2x" style="color:darkred"></i>&nbsp; Bryan Techel <br>
+     &nbsp; <i class="fa fa-map-marker fa-2x" style="color:blue"></i>&nbsp; Chris Wirz <br>
+     &nbsp; <i class="fa fa-map-marker fa-2x" style="color:green"></i>&nbsp; Mike Klauda <br>
+     &nbsp; <i class="fa fa-map-marker fa-2x" style="color:orange"></i>&nbsp; Paul Fiereck <br>
+     &nbsp; <i class="fa fa-map-marker fa-2x" style="color:purple"></i>&nbsp; Pete Dunn <br>
+      </div>
+     
+    
+     <div style="position: fixed; 
+     bottom: 10px; right: 10px; width: 250px; height: 50px; 
+     background-color: white; border:2px solid grey; z-index:9999; font-size:16px;
+     ">&nbsp; <b>North Central Bus Clients</b> <br>
+     &nbsp; <span style="font-size:12px;">Created by Cole Gauerke</span>
+     </div>
+     
+    
+            <div class="folium-map" id="map_81ff8ba50940c07804318b411da27821" ></div>
+        
+</body>
+<script>
+    
+    
+            var map_81ff8ba50940c07804318b411da27821 = L.map(
+                "map_81ff8ba50940c07804318b411da27821",
+                {
+                    center: [37.0902, -95.7129],
+                    crs: L.CRS.EPSG3857,
+                    zoom: 5,
+                    zoomControl: true,
+                    preferCanvas: false,
+                }
+            );
+
+            
+
+        
+    
+            var tile_layer_ce895e86ef7b8a2e14eb3b873cf150eb = L.tileLayer(
+                "https://tile.openstreetmap.org/{z}/{x}/{y}.png",
+                {"attribution": "\u0026copy; \u003ca href=\"https://www.openstreetmap.org/copyright\"\u003eOpenStreetMap\u003c/a\u003e contributors", "detectRetina": false, "maxNativeZoom": 19, "maxZoom": 19, "minZoom": 0, "noWrap": false, "opacity": 1, "subdomains": "abc", "tms": false}
+            );
+        
+    
+            tile_layer_ce895e86ef7b8a2e14eb3b873cf150eb.addTo(map_81ff8ba50940c07804318b411da27821);
+        
+    
+            var marker_473dd5c323eca61a77a24af3367021d7 = L.marker(
+                [44.61805589999999, -95.41014159999999],
+                {}
+            ).addTo(map_81ff8ba50940c07804318b411da27821);
+        
+    
+            var icon_9e5b05debfc71a6f94d8e404367b0932 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "darkred", "prefix": "glyphicon"}
+            );
+            marker_473dd5c323eca61a77a24af3367021d7.setIcon(icon_9e5b05debfc71a6f94d8e404367b0932);
+        
+    
+        var popup_43ed027427f1314b41ee081bf04dfb6e = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_64e3d6d4eb88dc8301687de81f63531a = $(`<div id="html_64e3d6d4eb88dc8301687de81f63531a" style="width: 100.0%; height: 100.0%;"><b>Client:</b> Echo Schools<br><b>Salesman:</b> Bryan Techel</div>`)[0];
+                popup_43ed027427f1314b41ee081bf04dfb6e.setContent(html_64e3d6d4eb88dc8301687de81f63531a);
+            
+        
+
+        marker_473dd5c323eca61a77a24af3367021d7.bindPopup(popup_43ed027427f1314b41ee081bf04dfb6e)
+        ;
+
+        
+    
+    
+            var marker_95e09f547118e39baadd31f01eb6334c = L.marker(
+                [47.580936, -94.9662767],
+                {}
+            ).addTo(map_81ff8ba50940c07804318b411da27821);
+        
+    
+            var icon_0c00254154b5798d8c87471b8fe9249a = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "darkred", "prefix": "glyphicon"}
+            );
+            marker_95e09f547118e39baadd31f01eb6334c.setIcon(icon_0c00254154b5798d8c87471b8fe9249a);
+        
+    
+        var popup_0041f8a0ff4d8e0f1b2fc214bc26b709 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_e44d652e61164eb84e1eb6e36b7cec15 = $(`<div id="html_e44d652e61164eb84e1eb6e36b7cec15" style="width: 100.0%; height: 100.0%;"><b>Client:</b> Blom Bus Service<br><b>Salesman:</b> Bryan Techel</div>`)[0];
+                popup_0041f8a0ff4d8e0f1b2fc214bc26b709.setContent(html_e44d652e61164eb84e1eb6e36b7cec15);
+            
+        
+
+        marker_95e09f547118e39baadd31f01eb6334c.bindPopup(popup_0041f8a0ff4d8e0f1b2fc214bc26b709)
+        ;
+
+        
+    
+    
+            var marker_c4b3e10dfac444ca5f490b16d3ea2a96 = L.marker(
+                [45.2252933, -95.3957284],
+                {}
+            ).addTo(map_81ff8ba50940c07804318b411da27821);
+        
+    
+            var icon_558dd4d3d5b2bee0f15ed2c3e48b1a69 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "darkred", "prefix": "glyphicon"}
+            );
+            marker_c4b3e10dfac444ca5f490b16d3ea2a96.setIcon(icon_558dd4d3d5b2bee0f15ed2c3e48b1a69);
+        
+    
+        var popup_10050f7cb5986b2f14f003af9739016b = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_eb946e59b47d82a7a6ef1e2825a4fa83 = $(`<div id="html_eb946e59b47d82a7a6ef1e2825a4fa83" style="width: 100.0%; height: 100.0%;"><b>Client:</b> Riley Bus Service<br><b>Salesman:</b> Bryan Techel</div>`)[0];
+                popup_10050f7cb5986b2f14f003af9739016b.setContent(html_eb946e59b47d82a7a6ef1e2825a4fa83);
+            
+        
+
+        marker_c4b3e10dfac444ca5f490b16d3ea2a96.bindPopup(popup_10050f7cb5986b2f14f003af9739016b)
+        ;
+
+        
+    
+    
+            var marker_6e82c51b3339675c4ecbd4e2f6da33bd = L.marker(
+                [46.006306, -95.687972],
+                {}
+            ).addTo(map_81ff8ba50940c07804318b411da27821);
+        
+    
+            var icon_9df0da0b62e1e6f81c072d2625845b1e = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "darkred", "prefix": "glyphicon"}
+            );
+            marker_6e82c51b3339675c4ecbd4e2f6da33bd.setIcon(icon_9df0da0b62e1e6f81c072d2625845b1e);
+        
+    
+        var popup_df119f7080ce840b4189af8d1a50c0de = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_9cc814c88d448e81038d53da3d22814e = $(`<div id="html_9cc814c88d448e81038d53da3d22814e" style="width: 100.0%; height: 100.0%;"><b>Client:</b> Evansville School District #208<br><b>Salesman:</b> Bryan Techel</div>`)[0];
+                popup_df119f7080ce840b4189af8d1a50c0de.setContent(html_9cc814c88d448e81038d53da3d22814e);
+            
+        
+
+        marker_6e82c51b3339675c4ecbd4e2f6da33bd.bindPopup(popup_df119f7080ce840b4189af8d1a50c0de)
+        ;
+
+        
+    
+    
+            var marker_1d75462e02eb26b39919b317b6ba12d8 = L.marker(
+                [45.811358, -96.1375319],
+                {}
+            ).addTo(map_81ff8ba50940c07804318b411da27821);
+        
+    
+            var icon_97b07786455cb47caabae79807543607 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "darkred", "prefix": "glyphicon"}
+            );
+            marker_1d75462e02eb26b39919b317b6ba12d8.setIcon(icon_97b07786455cb47caabae79807543607);
+        
+    
+        var popup_e7c4b40e357f9713f24f6e1a99ce3dde = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_99f2397721f43a0071b7e00e3eb2a0f9 = $(`<div id="html_99f2397721f43a0071b7e00e3eb2a0f9" style="width: 100.0%; height: 100.0%;"><b>Client:</b> Herman-Norcross School District #264<br><b>Salesman:</b> Bryan Techel</div>`)[0];
+                popup_e7c4b40e357f9713f24f6e1a99ce3dde.setContent(html_99f2397721f43a0071b7e00e3eb2a0f9);
+            
+        
+
+        marker_1d75462e02eb26b39919b317b6ba12d8.bindPopup(popup_e7c4b40e357f9713f24f6e1a99ce3dde)
+        ;
+
+        
+    
+    
+            var marker_434f63224de2fe0466c1c310ac92e5c9 = L.marker(
+                [46.0922273, -95.82121020000001],
+                {}
+            ).addTo(map_81ff8ba50940c07804318b411da27821);
+        
+    
+            var icon_77eb9c88c400ac569795c19f688f606d = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "darkred", "prefix": "glyphicon"}
+            );
+            marker_434f63224de2fe0466c1c310ac92e5c9.setIcon(icon_77eb9c88c400ac569795c19f688f606d);
+        
+    
+        var popup_489efbda31e251023013538994d8a007 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_d69a8b60be512be066c16728ca896b63 = $(`<div id="html_d69a8b60be512be066c16728ca896b63" style="width: 100.0%; height: 100.0%;"><b>Client:</b> Ashby Public Schools<br><b>Salesman:</b> Bryan Techel</div>`)[0];
+                popup_489efbda31e251023013538994d8a007.setContent(html_d69a8b60be512be066c16728ca896b63);
+            
+        
+
+        marker_434f63224de2fe0466c1c310ac92e5c9.bindPopup(popup_489efbda31e251023013538994d8a007)
+        ;
+
+        
+    
+    
+            var marker_ebdee4e9f475fa3d6a6038c759248877 = L.marker(
+                [46.09572800000001, -96.40531179999999],
+                {}
+            ).addTo(map_81ff8ba50940c07804318b411da27821);
+        
+    
+            var icon_2db9946725ab8db053f5c88acec66201 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "darkred", "prefix": "glyphicon"}
+            );
+            marker_ebdee4e9f475fa3d6a6038c759248877.setIcon(icon_2db9946725ab8db053f5c88acec66201);
+        
+    
+        var popup_90cf5e8e88eb7c47bb57e3b2b2dac9cd = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_41f9e4bcd11fac58929124bfbd05c43c = $(`<div id="html_41f9e4bcd11fac58929124bfbd05c43c" style="width: 100.0%; height: 100.0%;"><b>Client:</b> Campbell Tintah School District #852<br><b>Salesman:</b> Bryan Techel</div>`)[0];
+                popup_90cf5e8e88eb7c47bb57e3b2b2dac9cd.setContent(html_41f9e4bcd11fac58929124bfbd05c43c);
+            
+        
+
+        marker_ebdee4e9f475fa3d6a6038c759248877.bindPopup(popup_90cf5e8e88eb7c47bb57e3b2b2dac9cd)
+        ;
+
+        
+    
+    
+            var marker_1ac3d96beed058e779710163cb4625c5 = L.marker(
+                [45.4973868, -95.7901426],
+                {}
+            ).addTo(map_81ff8ba50940c07804318b411da27821);
+        
+    
+            var icon_f696f03589f0b8c0a73dcc6370e154fb = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "darkred", "prefix": "glyphicon"}
+            );
+            marker_1ac3d96beed058e779710163cb4625c5.setIcon(icon_f696f03589f0b8c0a73dcc6370e154fb);
+        
+    
+        var popup_325517040904bb7baf294aff9ae4d761 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_f254aa18ba52349de971a1b2d22d2ab7 = $(`<div id="html_f254aa18ba52349de971a1b2d22d2ab7" style="width: 100.0%; height: 100.0%;"><b>Client:</b> Hancock Schools #768<br><b>Salesman:</b> Bryan Techel</div>`)[0];
+                popup_325517040904bb7baf294aff9ae4d761.setContent(html_f254aa18ba52349de971a1b2d22d2ab7);
+            
+        
+
+        marker_1ac3d96beed058e779710163cb4625c5.bindPopup(popup_325517040904bb7baf294aff9ae4d761)
+        ;
+
+        
+    
+    
+            var marker_385e9d2110c29bd9cb164c0dbf352567 = L.marker(
+                [45.5725914, -96.1761555],
+                {}
+            ).addTo(map_81ff8ba50940c07804318b411da27821);
+        
+    
+            var icon_b96981c7079ec90391d873619a1cb47e = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "darkred", "prefix": "glyphicon"}
+            );
+            marker_385e9d2110c29bd9cb164c0dbf352567.setIcon(icon_b96981c7079ec90391d873619a1cb47e);
+        
+    
+        var popup_c156c4446dbcbc7cf3651222fb962e1c = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_543dcbead698905ae6fa2e9ab09d5c52 = $(`<div id="html_543dcbead698905ae6fa2e9ab09d5c52" style="width: 100.0%; height: 100.0%;"><b>Client:</b> Chokio/Alberta School District #711<br><b>Salesman:</b> Bryan Techel</div>`)[0];
+                popup_c156c4446dbcbc7cf3651222fb962e1c.setContent(html_543dcbead698905ae6fa2e9ab09d5c52);
+            
+        
+
+        marker_385e9d2110c29bd9cb164c0dbf352567.bindPopup(popup_c156c4446dbcbc7cf3651222fb962e1c)
+        ;
+
+        
+    
+    
+            var marker_7e8c906d6d36a1d4372fa92755629d14 = L.marker(
+                [45.1930535, -95.3183808],
+                {}
+            ).addTo(map_81ff8ba50940c07804318b411da27821);
+        
+    
+            var icon_8fd4d1e1e8be1cc71e47b3d97a23e204 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "darkred", "prefix": "glyphicon"}
+            );
+            marker_7e8c906d6d36a1d4372fa92755629d14.setIcon(icon_8fd4d1e1e8be1cc71e47b3d97a23e204);
+        
+    
+        var popup_d3dc291ded32c85b9a8eddad00d4ebf9 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_6b0a9b7750fe57dce5d811b895fc2124 = $(`<div id="html_6b0a9b7750fe57dce5d811b895fc2124" style="width: 100.0%; height: 100.0%;"><b>Client:</b> Rustad School Bus INC.<br><b>Salesman:</b> Bryan Techel</div>`)[0];
+                popup_d3dc291ded32c85b9a8eddad00d4ebf9.setContent(html_6b0a9b7750fe57dce5d811b895fc2124);
+            
+        
+
+        marker_7e8c906d6d36a1d4372fa92755629d14.bindPopup(popup_d3dc291ded32c85b9a8eddad00d4ebf9)
+        ;
+
+        
+    
+    
+            var marker_53fe66eef5f092b71e72f34909aa0ff5 = L.marker(
+                [44.3206024, -94.01008180000001],
+                {}
+            ).addTo(map_81ff8ba50940c07804318b411da27821);
+        
+    
+            var icon_90220f8576023a28abd6f18d11e89a01 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "blue", "prefix": "glyphicon"}
+            );
+            marker_53fe66eef5f092b71e72f34909aa0ff5.setIcon(icon_90220f8576023a28abd6f18d11e89a01);
+        
+    
+        var popup_bdd1f703f1f22b5a07b0f73bdc9f43a3 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_727b0dd2a9e6081ea83e42c04fd8d3bf = $(`<div id="html_727b0dd2a9e6081ea83e42c04fd8d3bf" style="width: 100.0%; height: 100.0%;"><b>Client:</b> 4.0 Corporate Office<br><b>Salesman:</b> Chris Wirz</div>`)[0];
+                popup_bdd1f703f1f22b5a07b0f73bdc9f43a3.setContent(html_727b0dd2a9e6081ea83e42c04fd8d3bf);
+            
+        
+
+        marker_53fe66eef5f092b71e72f34909aa0ff5.bindPopup(popup_bdd1f703f1f22b5a07b0f73bdc9f43a3)
+        ;
+
+        
+    
+    
+            var marker_1884e557b11c927f7ec0007d1f5cbe7c = L.marker(
+                [44.9902502, -93.3909906],
+                {}
+            ).addTo(map_81ff8ba50940c07804318b411da27821);
+        
+    
+            var icon_3f3be0c8f4bec25c4c7441d87cb236e9 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "blue", "prefix": "glyphicon"}
+            );
+            marker_1884e557b11c927f7ec0007d1f5cbe7c.setIcon(icon_3f3be0c8f4bec25c4c7441d87cb236e9);
+        
+    
+        var popup_16742a5bc21fa3882c7d6de98c4c3d40 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_1e9565f6a654e6d7e99286f6dc1ae0d9 = $(`<div id="html_1e9565f6a654e6d7e99286f6dc1ae0d9" style="width: 100.0%; height: 100.0%;"><b>Client:</b> Academy of Whole Learning<br><b>Salesman:</b> Chris Wirz</div>`)[0];
+                popup_16742a5bc21fa3882c7d6de98c4c3d40.setContent(html_1e9565f6a654e6d7e99286f6dc1ae0d9);
+            
+        
+
+        marker_1884e557b11c927f7ec0007d1f5cbe7c.bindPopup(popup_16742a5bc21fa3882c7d6de98c4c3d40)
+        ;
+
+        
+    
+    
+            var marker_fd78a1c1134e424c8e8805898331045d = L.marker(
+                [45.0462391, -93.09608089999999],
+                {}
+            ).addTo(map_81ff8ba50940c07804318b411da27821);
+        
+    
+            var icon_299f4bc374b49d18188531951c69aa08 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "blue", "prefix": "glyphicon"}
+            );
+            marker_fd78a1c1134e424c8e8805898331045d.setIcon(icon_299f4bc374b49d18188531951c69aa08);
+        
+    
+        var popup_f388d2a5c87f3b8bb1a9bd6b16df6955 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_e7b9e4f64cf4cc21c1f0ec397cc48a20 = $(`<div id="html_e7b9e4f64cf4cc21c1f0ec397cc48a20" style="width: 100.0%; height: 100.0%;"><b>Client:</b> AFSA - Academy for Sciences and Agriculture<br><b>Salesman:</b> Chris Wirz</div>`)[0];
+                popup_f388d2a5c87f3b8bb1a9bd6b16df6955.setContent(html_e7b9e4f64cf4cc21c1f0ec397cc48a20);
+            
+        
+
+        marker_fd78a1c1134e424c8e8805898331045d.bindPopup(popup_f388d2a5c87f3b8bb1a9bd6b16df6955)
+        ;
+
+        
+    
+    
+            var marker_b05b8cdf70ac49e70c836efbbc3db495 = L.marker(
+                [45.0027517, -93.2937788],
+                {}
+            ).addTo(map_81ff8ba50940c07804318b411da27821);
+        
+    
+            var icon_2684bbba4103e0c7c553f5f3825441c4 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "blue", "prefix": "glyphicon"}
+            );
+            marker_b05b8cdf70ac49e70c836efbbc3db495.setIcon(icon_2684bbba4103e0c7c553f5f3825441c4);
+        
+    
+        var popup_7b95adb473b780940ef4130d1972a957 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_a792d53c0eec0fd957d551e5ec3865e7 = $(`<div id="html_a792d53c0eec0fd957d551e5ec3865e7" style="width: 100.0%; height: 100.0%;"><b>Client:</b> Agape Child Development Center<br><b>Salesman:</b> Chris Wirz</div>`)[0];
+                popup_7b95adb473b780940ef4130d1972a957.setContent(html_a792d53c0eec0fd957d551e5ec3865e7);
+            
+        
+
+        marker_b05b8cdf70ac49e70c836efbbc3db495.bindPopup(popup_7b95adb473b780940ef4130d1972a957)
+        ;
+
+        
+    
+    
+            var marker_d5c19dca5ef933b51b8e8a998eadb8b5 = L.marker(
+                [46.0783211, -94.86998609999999],
+                {}
+            ).addTo(map_81ff8ba50940c07804318b411da27821);
+        
+    
+            var icon_71ccd4e7dadf3adf2cec71c4d55b21a4 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "blue", "prefix": "glyphicon"}
+            );
+            marker_d5c19dca5ef933b51b8e8a998eadb8b5.setIcon(icon_71ccd4e7dadf3adf2cec71c4d55b21a4);
+        
+    
+        var popup_6778d0ab2a227a5e70165ae88ab07d72 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_e835824b98c29689c4749ffdd81ddcda = $(`<div id="html_e835824b98c29689c4749ffdd81ddcda" style="width: 100.0%; height: 100.0%;"><b>Client:</b> Askamit Transportation INC<br><b>Salesman:</b> Chris Wirz</div>`)[0];
+                popup_6778d0ab2a227a5e70165ae88ab07d72.setContent(html_e835824b98c29689c4749ffdd81ddcda);
+            
+        
+
+        marker_d5c19dca5ef933b51b8e8a998eadb8b5.bindPopup(popup_6778d0ab2a227a5e70165ae88ab07d72)
+        ;
+
+        
+    
+    
+            var marker_7990cc3b0582e9c90fb39b9a5969c8a6 = L.marker(
+                [45.132883, -93.23991000000001],
+                {}
+            ).addTo(map_81ff8ba50940c07804318b411da27821);
+        
+    
+            var icon_c47a522096e661298be04ae94b875f9b = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "blue", "prefix": "glyphicon"}
+            );
+            marker_7990cc3b0582e9c90fb39b9a5969c8a6.setIcon(icon_c47a522096e661298be04ae94b875f9b);
+        
+    
+        var popup_d9721248cb60b6e0ebedc0a5c4aedd62 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_93d8ba0c481a7d7658acc41343e158e9 = $(`<div id="html_93d8ba0c481a7d7658acc41343e158e9" style="width: 100.0%; height: 100.0%;"><b>Client:</b> Anoka County Community ACT.<br><b>Salesman:</b> Chris Wirz</div>`)[0];
+                popup_d9721248cb60b6e0ebedc0a5c4aedd62.setContent(html_93d8ba0c481a7d7658acc41343e158e9);
+            
+        
+
+        marker_7990cc3b0582e9c90fb39b9a5969c8a6.bindPopup(popup_d9721248cb60b6e0ebedc0a5c4aedd62)
+        ;
+
+        
+    
+    
+            var marker_4c5ba61cead5b754fc4636ba391815fa = L.marker(
+                [45.3993348, -93.8726662],
+                {}
+            ).addTo(map_81ff8ba50940c07804318b411da27821);
+        
+    
+            var icon_23f243900f0a76e0e36e5fdb1c0c5221 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "blue", "prefix": "glyphicon"}
+            );
+            marker_4c5ba61cead5b754fc4636ba391815fa.setIcon(icon_23f243900f0a76e0e36e5fdb1c0c5221);
+        
+    
+        var popup_92cfe53bd9453d7c6b35246b3000d472 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_b847126da535a5081801250010fa7def = $(`<div id="html_b847126da535a5081801250010fa7def" style="width: 100.0%; height: 100.0%;"><b>Client:</b> Becker School District #726<br><b>Salesman:</b> Chris Wirz</div>`)[0];
+                popup_92cfe53bd9453d7c6b35246b3000d472.setContent(html_b847126da535a5081801250010fa7def);
+            
+        
+
+        marker_4c5ba61cead5b754fc4636ba391815fa.bindPopup(popup_92cfe53bd9453d7c6b35246b3000d472)
+        ;
+
+        
+    
+    
+            var marker_0f8caa9fa182de2dc6aa2337f2814651 = L.marker(
+                [44.2752367, -94.1869377],
+                {}
+            ).addTo(map_81ff8ba50940c07804318b411da27821);
+        
+    
+            var icon_ebbbee2c8f99dd459126adf06bd83faa = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "blue", "prefix": "glyphicon"}
+            );
+            marker_0f8caa9fa182de2dc6aa2337f2814651.setIcon(icon_ebbbee2c8f99dd459126adf06bd83faa);
+        
+    
+        var popup_4aa7bb1e068e88cc69d9ddc3861529cf = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_81972eef408fdf2909cfbc592a5b956d = $(`<div id="html_81972eef408fdf2909cfbc592a5b956d" style="width: 100.0%; height: 100.0%;"><b>Client:</b> Beckly Mckinley<br><b>Salesman:</b> Chris Wirz</div>`)[0];
+                popup_4aa7bb1e068e88cc69d9ddc3861529cf.setContent(html_81972eef408fdf2909cfbc592a5b956d);
+            
+        
+
+        marker_0f8caa9fa182de2dc6aa2337f2814651.bindPopup(popup_4aa7bb1e068e88cc69d9ddc3861529cf)
+        ;
+
+        
+    
+    
+            var marker_ac54aeaf3be0b9d55c3795b8f5732438 = L.marker(
+                [44.9582188, -93.3449885],
+                {}
+            ).addTo(map_81ff8ba50940c07804318b411da27821);
+        
+    
+            var icon_bd814325a5c60560e9e8b32bbaaad1fa = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "blue", "prefix": "glyphicon"}
+            );
+            marker_ac54aeaf3be0b9d55c3795b8f5732438.setIcon(icon_bd814325a5c60560e9e8b32bbaaad1fa);
+        
+    
+        var popup_e997f4318c6dd5c605aac7661abd8da8 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_5dfa706467960918c7bc4ea3b6cb1c67 = $(`<div id="html_5dfa706467960918c7bc4ea3b6cb1c67" style="width: 100.0%; height: 100.0%;"><b>Client:</b> Benilde St. Margarewt's<br><b>Salesman:</b> Chris Wirz</div>`)[0];
+                popup_e997f4318c6dd5c605aac7661abd8da8.setContent(html_5dfa706467960918c7bc4ea3b6cb1c67);
+            
+        
+
+        marker_ac54aeaf3be0b9d55c3795b8f5732438.bindPopup(popup_e997f4318c6dd5c605aac7661abd8da8)
+        ;
+
+        
+    
+    
+            var marker_ac725165fce85cac4e9aad7e1ef34ffa = L.marker(
+                [44.810916, -95.51362259999999],
+                {}
+            ).addTo(map_81ff8ba50940c07804318b411da27821);
+        
+    
+            var icon_995b4338483d02277e2cf905501bf30d = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "blue", "prefix": "glyphicon"}
+            );
+            marker_ac725165fce85cac4e9aad7e1ef34ffa.setIcon(icon_995b4338483d02277e2cf905501bf30d);
+        
+    
+        var popup_ada6433b543c11c4e84f4070531a7f39 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_21e50429504391de110f1fc2f1c40c9b = $(`<div id="html_21e50429504391de110f1fc2f1c40c9b" style="width: 100.0%; height: 100.0%;"><b>Client:</b> Bennet & Bennet Transportation<br><b>Salesman:</b> Chris Wirz</div>`)[0];
+                popup_ada6433b543c11c4e84f4070531a7f39.setContent(html_21e50429504391de110f1fc2f1c40c9b);
+            
+        
+
+        marker_ac725165fce85cac4e9aad7e1ef34ffa.bindPopup(popup_ada6433b543c11c4e84f4070531a7f39)
+        ;
+
+        
+    
+    
+            var marker_3e8cc374437a494ad0934ad0fb5f09d3 = L.marker(
+                [44.6203764, -93.29536929999999],
+                {}
+            ).addTo(map_81ff8ba50940c07804318b411da27821);
+        
+    
+            var icon_3836be7054bc56f050a6723cf447c8d5 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "green", "prefix": "glyphicon"}
+            );
+            marker_3e8cc374437a494ad0934ad0fb5f09d3.setIcon(icon_3836be7054bc56f050a6723cf447c8d5);
+        
+    
+        var popup_2cb9266da0fff83eb1923d8cbcf6b86b = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_a9ebee057d415cf0e2f882e108106973 = $(`<div id="html_a9ebee057d415cf0e2f882e108106973" style="width: 100.0%; height: 100.0%;"><b>Client:</b> Schmitty and Sons<br><b>Salesman:</b> Mike Klauda</div>`)[0];
+                popup_2cb9266da0fff83eb1923d8cbcf6b86b.setContent(html_a9ebee057d415cf0e2f882e108106973);
+            
+        
+
+        marker_3e8cc374437a494ad0934ad0fb5f09d3.bindPopup(popup_2cb9266da0fff83eb1923d8cbcf6b86b)
+        ;
+
+        
+    
+    
+            var marker_94ee01b83c1c8e8ee1fcbce192185c37 = L.marker(
+                [44.0562603, -91.6662456],
+                {}
+            ).addTo(map_81ff8ba50940c07804318b411da27821);
+        
+    
+            var icon_b3a7296ea51d9791434ae5d994db0fb4 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "green", "prefix": "glyphicon"}
+            );
+            marker_94ee01b83c1c8e8ee1fcbce192185c37.setIcon(icon_b3a7296ea51d9791434ae5d994db0fb4);
+        
+    
+        var popup_bc42532595ad29cefba26f8eff175ada = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_7fa68ba79a3a0cdd26d0c4d42734c11a = $(`<div id="html_7fa68ba79a3a0cdd26d0c4d42734c11a" style="width: 100.0%; height: 100.0%;"><b>Client:</b> CITY OF WINONA<br><b>Salesman:</b> Mike Klauda</div>`)[0];
+                popup_bc42532595ad29cefba26f8eff175ada.setContent(html_7fa68ba79a3a0cdd26d0c4d42734c11a);
+            
+        
+
+        marker_94ee01b83c1c8e8ee1fcbce192185c37.bindPopup(popup_bc42532595ad29cefba26f8eff175ada)
+        ;
+
+        
+    
+    
+            var marker_e373f4133fd688bf238da5d1137e494e = L.marker(
+                [43.6541787, -96.2220736],
+                {}
+            ).addTo(map_81ff8ba50940c07804318b411da27821);
+        
+    
+            var icon_0c5d2f69b524586ecb27d626276024ae = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "green", "prefix": "glyphicon"}
+            );
+            marker_e373f4133fd688bf238da5d1137e494e.setIcon(icon_0c5d2f69b524586ecb27d626276024ae);
+        
+    
+        var popup_edb04aa11eb40b3a51d0af2d1c6d37f7 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_bf7a938b5176706cea252f7d092cb658 = $(`<div id="html_bf7a938b5176706cea252f7d092cb658" style="width: 100.0%; height: 100.0%;"><b>Client:</b> ROCK COUNTY OPPORTUNITIES<br><b>Salesman:</b> Mike Klauda</div>`)[0];
+                popup_edb04aa11eb40b3a51d0af2d1c6d37f7.setContent(html_bf7a938b5176706cea252f7d092cb658);
+            
+        
+
+        marker_e373f4133fd688bf238da5d1137e494e.bindPopup(popup_edb04aa11eb40b3a51d0af2d1c6d37f7)
+        ;
+
+        
+    
+    
+            var marker_81d8412b6bce8ab014037362f1788d05 = L.marker(
+                [45.5657609, -93.1999874],
+                {}
+            ).addTo(map_81ff8ba50940c07804318b411da27821);
+        
+    
+            var icon_f6ded1c4fb666af8796bd4203fbd0ac3 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "green", "prefix": "glyphicon"}
+            );
+            marker_81d8412b6bce8ab014037362f1788d05.setIcon(icon_f6ded1c4fb666af8796bd4203fbd0ac3);
+        
+    
+        var popup_2a23b05bb853b98ff8034dcdd0f05718 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_30d9c97b825c49822a31aa5f94f54e8e = $(`<div id="html_30d9c97b825c49822a31aa5f94f54e8e" style="width: 100.0%; height: 100.0%;"><b>Client:</b> WALKER METHODIST (MULTIPLE CAMPUSES OF ONE LOCATION)<br><b>Salesman:</b> Mike Klauda</div>`)[0];
+                popup_2a23b05bb853b98ff8034dcdd0f05718.setContent(html_30d9c97b825c49822a31aa5f94f54e8e);
+            
+        
+
+        marker_81d8412b6bce8ab014037362f1788d05.bindPopup(popup_2a23b05bb853b98ff8034dcdd0f05718)
+        ;
+
+        
+    
+    
+            var marker_415ffc236da17c94f3f8058bca3dc75b = L.marker(
+                [44.1627069, -94.00068],
+                {}
+            ).addTo(map_81ff8ba50940c07804318b411da27821);
+        
+    
+            var icon_ef53ea02dd17252abafdd3a37318622e = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "green", "prefix": "glyphicon"}
+            );
+            marker_415ffc236da17c94f3f8058bca3dc75b.setIcon(icon_ef53ea02dd17252abafdd3a37318622e);
+        
+    
+        var popup_afc2bc98c4cd625e61b771bbe7feb79d = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_cfe9be687fc4d5a62445280460c164f0 = $(`<div id="html_cfe9be687fc4d5a62445280460c164f0" style="width: 100.0%; height: 100.0%;"><b>Client:</b> VINE FAITH IN ACTION<br><b>Salesman:</b> Mike Klauda</div>`)[0];
+                popup_afc2bc98c4cd625e61b771bbe7feb79d.setContent(html_cfe9be687fc4d5a62445280460c164f0);
+            
+        
+
+        marker_415ffc236da17c94f3f8058bca3dc75b.bindPopup(popup_afc2bc98c4cd625e61b771bbe7feb79d)
+        ;
+
+        
+    
+    
+            var marker_cbe41160be20b5a07924cf359c74bb4c = L.marker(
+                [45.0246058, -93.186748],
+                {}
+            ).addTo(map_81ff8ba50940c07804318b411da27821);
+        
+    
+            var icon_c359506f2ddd46199d7ac5919f07a037 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "green", "prefix": "glyphicon"}
+            );
+            marker_cbe41160be20b5a07924cf359c74bb4c.setIcon(icon_c359506f2ddd46199d7ac5919f07a037);
+        
+    
+        var popup_29a6197806268dacf1b60f0ae1fada74 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_08dc34a41f6b1640eebd743c20bfb1ba = $(`<div id="html_08dc34a41f6b1640eebd743c20bfb1ba" style="width: 100.0%; height: 100.0%;"><b>Client:</b> NE CONTEMPORARY SERVICES<br><b>Salesman:</b> Mike Klauda</div>`)[0];
+                popup_29a6197806268dacf1b60f0ae1fada74.setContent(html_08dc34a41f6b1640eebd743c20bfb1ba);
+            
+        
+
+        marker_cbe41160be20b5a07924cf359c74bb4c.bindPopup(popup_29a6197806268dacf1b60f0ae1fada74)
+        ;
+
+        
+    
+    
+            var marker_e9e1867ed0257d8c2713f1f1055238c7 = L.marker(
+                [44.98125539999999, -93.2948622],
+                {}
+            ).addTo(map_81ff8ba50940c07804318b411da27821);
+        
+    
+            var icon_85a12127ac3bb33a48f84b4c11ac46b7 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "green", "prefix": "glyphicon"}
+            );
+            marker_e9e1867ed0257d8c2713f1f1055238c7.setIcon(icon_85a12127ac3bb33a48f84b4c11ac46b7);
+        
+    
+        var popup_2b2a46bb335e12b3917a1a4532e7b5c1 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_5a55e64c04090703e1f7783c80879a76 = $(`<div id="html_5a55e64c04090703e1f7783c80879a76" style="width: 100.0%; height: 100.0%;"><b>Client:</b> AUGUSTANA CARES COMMUNITY PARTNERS<br><b>Salesman:</b> Mike Klauda</div>`)[0];
+                popup_2b2a46bb335e12b3917a1a4532e7b5c1.setContent(html_5a55e64c04090703e1f7783c80879a76);
+            
+        
+
+        marker_e9e1867ed0257d8c2713f1f1055238c7.bindPopup(popup_2b2a46bb335e12b3917a1a4532e7b5c1)
+        ;
+
+        
+    
+    
+            var marker_caad7092b77aac65b77dd2bdaaffec9d = L.marker(
+                [44.967727, -93.26466599999999],
+                {}
+            ).addTo(map_81ff8ba50940c07804318b411da27821);
+        
+    
+            var icon_df18786139bf7ffcab4bd1b9fd6cc429 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "green", "prefix": "glyphicon"}
+            );
+            marker_caad7092b77aac65b77dd2bdaaffec9d.setIcon(icon_df18786139bf7ffcab4bd1b9fd6cc429);
+        
+    
+        var popup_85c829c7ea5d3cf04ca668f635d3a789 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_cc891d4aaedb9e583731e4f5d122659a = $(`<div id="html_cc891d4aaedb9e583731e4f5d122659a" style="width: 100.0%; height: 100.0%;"><b>Client:</b> VOLUNTEERS OF AMERICA<br><b>Salesman:</b> Mike Klauda</div>`)[0];
+                popup_85c829c7ea5d3cf04ca668f635d3a789.setContent(html_cc891d4aaedb9e583731e4f5d122659a);
+            
+        
+
+        marker_caad7092b77aac65b77dd2bdaaffec9d.bindPopup(popup_85c829c7ea5d3cf04ca668f635d3a789)
+        ;
+
+        
+    
+    
+            var marker_4393b3b8b4df203cede0e4fdbfd7143c = L.marker(
+                [44.0295675, -92.7509042],
+                {}
+            ).addTo(map_81ff8ba50940c07804318b411da27821);
+        
+    
+            var icon_c25155471cb2c2b7e912a000bfc31839 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "green", "prefix": "glyphicon"}
+            );
+            marker_4393b3b8b4df203cede0e4fdbfd7143c.setIcon(icon_c25155471cb2c2b7e912a000bfc31839);
+        
+    
+        var popup_60e68c85a7e9c2d1bbac28ac2ed307d2 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_52474b49f0f76b92480876b6f4bd98e4 = $(`<div id="html_52474b49f0f76b92480876b6f4bd98e4" style="width: 100.0%; height: 100.0%;"><b>Client:</b> SEMCAC - Rolling Hills Transit<br><b>Salesman:</b> Mike Klauda</div>`)[0];
+                popup_60e68c85a7e9c2d1bbac28ac2ed307d2.setContent(html_52474b49f0f76b92480876b6f4bd98e4);
+            
+        
+
+        marker_4393b3b8b4df203cede0e4fdbfd7143c.bindPopup(popup_60e68c85a7e9c2d1bbac28ac2ed307d2)
+        ;
+
+        
+    
+    
+            var marker_9c05a3f91242643a4b1d1bbbf6468db4 = L.marker(
+                [43.9869839, -94.62396170000001],
+                {}
+            ).addTo(map_81ff8ba50940c07804318b411da27821);
+        
+    
+            var icon_d70ac9b4c7a01b4ef34b04c9760bfe20 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "green", "prefix": "glyphicon"}
+            );
+            marker_9c05a3f91242643a4b1d1bbbf6468db4.setIcon(icon_d70ac9b4c7a01b4ef34b04c9760bfe20);
+        
+    
+        var popup_5b95ea622d202b49b44d603b0d7fd9cc = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_ec0ca8f99c45e5849d2f18c1898054c5 = $(`<div id="html_ec0ca8f99c45e5849d2f18c1898054c5" style="width: 100.0%; height: 100.0%;"><b>Client:</b> WATONWAN COUNTY TMT<br><b>Salesman:</b> Mike Klauda</div>`)[0];
+                popup_5b95ea622d202b49b44d603b0d7fd9cc.setContent(html_ec0ca8f99c45e5849d2f18c1898054c5);
+            
+        
+
+        marker_9c05a3f91242643a4b1d1bbbf6468db4.bindPopup(popup_5b95ea622d202b49b44d603b0d7fd9cc)
+        ;
+
+        
+    
+    
+            var marker_bdc50775834b016b6bb2dac89ed42edb = L.marker(
+                [44.3022067, -93.26021399999999],
+                {}
+            ).addTo(map_81ff8ba50940c07804318b411da27821);
+        
+    
+            var icon_c0b0f0c056f4965cfda85a392452cf38 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "orange", "prefix": "glyphicon"}
+            );
+            marker_bdc50775834b016b6bb2dac89ed42edb.setIcon(icon_c0b0f0c056f4965cfda85a392452cf38);
+        
+    
+        var popup_f5d3ea27893bd199764a3c4c3251c90c = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_ad06d2ad6c56815e42a7ac9c23a9e4fe = $(`<div id="html_ad06d2ad6c56815e42a7ac9c23a9e4fe" style="width: 100.0%; height: 100.0%;"><b>Client:</b> SHATTUCK-ST MARY'S<br><b>Salesman:</b> Paul Fiereck</div>`)[0];
+                popup_f5d3ea27893bd199764a3c4c3251c90c.setContent(html_ad06d2ad6c56815e42a7ac9c23a9e4fe);
+            
+        
+
+        marker_bdc50775834b016b6bb2dac89ed42edb.bindPopup(popup_f5d3ea27893bd199764a3c4c3251c90c)
+        ;
+
+        
+    
+    
+            var marker_759ac3316a78068b23064eef82121241 = L.marker(
+                [43.9988798, -92.42939679999999],
+                {}
+            ).addTo(map_81ff8ba50940c07804318b411da27821);
+        
+    
+            var icon_49584c2c7cc9c882334e11307d69a6ea = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "orange", "prefix": "glyphicon"}
+            );
+            marker_759ac3316a78068b23064eef82121241.setIcon(icon_49584c2c7cc9c882334e11307d69a6ea);
+        
+    
+        var popup_c20c1d9e229c380d2ff4f729a1987e52 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_4527f266d7ad84d61a2bea2dad806ad9 = $(`<div id="html_4527f266d7ad84d61a2bea2dad806ad9" style="width: 100.0%; height: 100.0%;"><b>Client:</b> WIEBOLD BUS<br><b>Salesman:</b> Paul Fiereck</div>`)[0];
+                popup_c20c1d9e229c380d2ff4f729a1987e52.setContent(html_4527f266d7ad84d61a2bea2dad806ad9);
+            
+        
+
+        marker_759ac3316a78068b23064eef82121241.bindPopup(popup_c20c1d9e229c380d2ff4f729a1987e52)
+        ;
+
+        
+    
+    
+            var marker_c17903b1cc49e1a1f9d7b97d3c7a0cc7 = L.marker(
+                [43.8661276, -95.5925149],
+                {}
+            ).addTo(map_81ff8ba50940c07804318b411da27821);
+        
+    
+            var icon_6d90dbd4367ed95dd1635442c6822658 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "orange", "prefix": "glyphicon"}
+            );
+            marker_c17903b1cc49e1a1f9d7b97d3c7a0cc7.setIcon(icon_6d90dbd4367ed95dd1635442c6822658);
+        
+    
+        var popup_40896dcaade742f3668836525f4dd23b = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_41862b21cf30751436dd908e82eb5614 = $(`<div id="html_41862b21cf30751436dd908e82eb5614" style="width: 100.0%; height: 100.0%;"><b>Client:</b> WITZEL BUS SERVICE, INC<br><b>Salesman:</b> Paul Fiereck</div>`)[0];
+                popup_40896dcaade742f3668836525f4dd23b.setContent(html_41862b21cf30751436dd908e82eb5614);
+            
+        
+
+        marker_c17903b1cc49e1a1f9d7b97d3c7a0cc7.bindPopup(popup_40896dcaade742f3668836525f4dd23b)
+        ;
+
+        
+    
+    
+            var marker_585ff06ec73a8da2919d6cc884e1eb35 = L.marker(
+                [44.2323277, -95.8749579],
+                {}
+            ).addTo(map_81ff8ba50940c07804318b411da27821);
+        
+    
+            var icon_2f5634a1b8d2bd8f8b69ce9e825212e3 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "orange", "prefix": "glyphicon"}
+            );
+            marker_585ff06ec73a8da2919d6cc884e1eb35.setIcon(icon_2f5634a1b8d2bd8f8b69ce9e825212e3);
+        
+    
+        var popup_9e041955649fcf32342126027236fc48 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_b64ac2a972cae94edbaddc20e3ac6a29 = $(`<div id="html_b64ac2a972cae94edbaddc20e3ac6a29" style="width: 100.0%; height: 100.0%;"><b>Client:</b> BALATON SCHOOL DISTRICT #411-01<br><b>Salesman:</b> Paul Fiereck</div>`)[0];
+                popup_9e041955649fcf32342126027236fc48.setContent(html_b64ac2a972cae94edbaddc20e3ac6a29);
+            
+        
+
+        marker_585ff06ec73a8da2919d6cc884e1eb35.bindPopup(popup_9e041955649fcf32342126027236fc48)
+        ;
+
+        
+    
+    
+            var marker_7cc75bfb4f6629df44ac39d370520460 = L.marker(
+                [44.0896891, -93.24041509999999],
+                {}
+            ).addTo(map_81ff8ba50940c07804318b411da27821);
+        
+    
+            var icon_7bf8d2f06e7c9aaa094eb98e443e5995 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "orange", "prefix": "glyphicon"}
+            );
+            marker_7cc75bfb4f6629df44ac39d370520460.setIcon(icon_7bf8d2f06e7c9aaa094eb98e443e5995);
+        
+    
+        var popup_2abedce6d789f0e0e6d5a6b8f7f4bf2b = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_5012c2b862b5040e574da97afd4152e5 = $(`<div id="html_5012c2b862b5040e574da97afd4152e5" style="width: 100.0%; height: 100.0%;"><b>Client:</b> RECOVERY SCHOOL OF SOUTHERN MN<br><b>Salesman:</b> Paul Fiereck</div>`)[0];
+                popup_2abedce6d789f0e0e6d5a6b8f7f4bf2b.setContent(html_5012c2b862b5040e574da97afd4152e5);
+            
+        
+
+        marker_7cc75bfb4f6629df44ac39d370520460.bindPopup(popup_2abedce6d789f0e0e6d5a6b8f7f4bf2b)
+        ;
+
+        
+    
+    
+            var marker_28d4463da57fc79b08f5f66261e0281f = L.marker(
+                [44.6599824, -93.6407876],
+                {}
+            ).addTo(map_81ff8ba50940c07804318b411da27821);
+        
+    
+            var icon_66a52ce3ba1caa77e6b870c20d5ab36f = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "orange", "prefix": "glyphicon"}
+            );
+            marker_28d4463da57fc79b08f5f66261e0281f.setIcon(icon_66a52ce3ba1caa77e6b870c20d5ab36f);
+        
+    
+        var popup_995577f63de30b63270242fd339116bc = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_c5c0055c65370378a7f0bcb2bdee1a81 = $(`<div id="html_c5c0055c65370378a7f0bcb2bdee1a81" style="width: 100.0%; height: 100.0%;"><b>Client:</b> JORDAN SCHOOL DISTRICT<br><b>Salesman:</b> Paul Fiereck</div>`)[0];
+                popup_995577f63de30b63270242fd339116bc.setContent(html_c5c0055c65370378a7f0bcb2bdee1a81);
+            
+        
+
+        marker_28d4463da57fc79b08f5f66261e0281f.bindPopup(popup_995577f63de30b63270242fd339116bc)
+        ;
+
+        
+    
+    
+            var marker_bc14e7bc46cf68d1a4c61b2031306757 = L.marker(
+                [43.509221, -92.9438856],
+                {}
+            ).addTo(map_81ff8ba50940c07804318b411da27821);
+        
+    
+            var icon_a7b88713d7d881ed32cead0e5820039c = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "orange", "prefix": "glyphicon"}
+            );
+            marker_bc14e7bc46cf68d1a4c61b2031306757.setIcon(icon_a7b88713d7d881ed32cead0e5820039c);
+        
+    
+        var popup_04bb23529c0156e340acc0f332b6affa = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_56b9ba1a05db65f09f00635d890fc439 = $(`<div id="html_56b9ba1a05db65f09f00635d890fc439" style="width: 100.0%; height: 100.0%;"><b>Client:</b> LYLE PUBLIC SCHOOL DISTRICT #497<br><b>Salesman:</b> Paul Fiereck</div>`)[0];
+                popup_04bb23529c0156e340acc0f332b6affa.setContent(html_56b9ba1a05db65f09f00635d890fc439);
+            
+        
+
+        marker_bc14e7bc46cf68d1a4c61b2031306757.bindPopup(popup_04bb23529c0156e340acc0f332b6affa)
+        ;
+
+        
+    
+    
+            var marker_4e921e883e73d211716866735ee2723e = L.marker(
+                [44.3859484, -95.893541],
+                {}
+            ).addTo(map_81ff8ba50940c07804318b411da27821);
+        
+    
+            var icon_93093764cb0b965534ead64716671377 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "orange", "prefix": "glyphicon"}
+            );
+            marker_4e921e883e73d211716866735ee2723e.setIcon(icon_93093764cb0b965534ead64716671377);
+        
+    
+        var popup_0c4a1b94bbcf2b2430a097254b3d3df5 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_b7b65fad03e3d2af155bb82759e36958 = $(`<div id="html_b7b65fad03e3d2af155bb82759e36958" style="width: 100.0%; height: 100.0%;"><b>Client:</b> LYND SCHOOL DISTRICT #415<br><b>Salesman:</b> Paul Fiereck</div>`)[0];
+                popup_0c4a1b94bbcf2b2430a097254b3d3df5.setContent(html_b7b65fad03e3d2af155bb82759e36958);
+            
+        
+
+        marker_4e921e883e73d211716866735ee2723e.bindPopup(popup_0c4a1b94bbcf2b2430a097254b3d3df5)
+        ;
+
+        
+    
+    
+            var marker_14339538a2667c390c47a7ac57d0f678 = L.marker(
+                [44.4158395, -95.5557394],
+                {}
+            ).addTo(map_81ff8ba50940c07804318b411da27821);
+        
+    
+            var icon_2b20b42a0ed2504158c6a1229f8623cf = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "orange", "prefix": "glyphicon"}
+            );
+            marker_14339538a2667c390c47a7ac57d0f678.setIcon(icon_2b20b42a0ed2504158c6a1229f8623cf);
+        
+    
+        var popup_a6f9eb9221bb1d86a327ac648804ec27 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_8237c9bd2d122100cb76b4db36e12fcd = $(`<div id="html_8237c9bd2d122100cb76b4db36e12fcd" style="width: 100.0%; height: 100.0%;"><b>Client:</b> MILROY SCHOOL DISTRICT #635-01<br><b>Salesman:</b> Paul Fiereck</div>`)[0];
+                popup_a6f9eb9221bb1d86a327ac648804ec27.setContent(html_8237c9bd2d122100cb76b4db36e12fcd);
+            
+        
+
+        marker_14339538a2667c390c47a7ac57d0f678.bindPopup(popup_a6f9eb9221bb1d86a327ac648804ec27)
+        ;
+
+        
+    
+    
+            var marker_8d8aced19806881d3af100aee2c33507 = L.marker(
+                [44.2721868, -92.985484],
+                {}
+            ).addTo(map_81ff8ba50940c07804318b411da27821);
+        
+    
+            var icon_762c424bc5dd0c7665ba37a2132005cf = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "orange", "prefix": "glyphicon"}
+            );
+            marker_8d8aced19806881d3af100aee2c33507.setIcon(icon_762c424bc5dd0c7665ba37a2132005cf);
+        
+    
+        var popup_59b39bc8d1b6b7012312fc180c608c28 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_3985898f41a305dbddb1b606e90eddd0 = $(`<div id="html_3985898f41a305dbddb1b606e90eddd0" style="width: 100.0%; height: 100.0%;"><b>Client:</b> BENGSTON BUS SERVICE<br><b>Salesman:</b> Paul Fiereck</div>`)[0];
+                popup_59b39bc8d1b6b7012312fc180c608c28.setContent(html_3985898f41a305dbddb1b606e90eddd0);
+            
+        
+
+        marker_8d8aced19806881d3af100aee2c33507.bindPopup(popup_59b39bc8d1b6b7012312fc180c608c28)
+        ;
+
+        
+    
+    
+            var marker_9004ec852bbc17b8fa0c843e8d7709af = L.marker(
+                [46.9902916, -96.7499954],
+                {}
+            ).addTo(map_81ff8ba50940c07804318b411da27821);
+        
+    
+            var icon_574d8e607477f72351cbfef71123db16 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "darkpurple", "prefix": "glyphicon"}
+            );
+            marker_9004ec852bbc17b8fa0c843e8d7709af.setIcon(icon_574d8e607477f72351cbfef71123db16);
+        
+    
+        var popup_83fd2ac0680e73856bc0774e981afa25 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_cb0184ecd876df88f3ad0e0416e2397b = $(`<div id="html_cb0184ecd876df88f3ad0e0416e2397b" style="width: 100.0%; height: 100.0%;"><b>Client:</b> Richards Transportation<br><b>Salesman:</b> Pete Dunn</div>`)[0];
+                popup_83fd2ac0680e73856bc0774e981afa25.setContent(html_cb0184ecd876df88f3ad0e0416e2397b);
+            
+        
+
+        marker_9004ec852bbc17b8fa0c843e8d7709af.bindPopup(popup_83fd2ac0680e73856bc0774e981afa25)
+        ;
+
+        
+    
+    
+            var marker_f5064f4a9c11bfca5fca04bdae3adb1f = L.marker(
+                [47.876346, -95.0169401],
+                {}
+            ).addTo(map_81ff8ba50940c07804318b411da27821);
+        
+    
+            var icon_5225a38f1134a13d14af9d47cde586d7 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "darkpurple", "prefix": "glyphicon"}
+            );
+            marker_f5064f4a9c11bfca5fca04bdae3adb1f.setIcon(icon_5225a38f1134a13d14af9d47cde586d7);
+        
+    
+        var popup_4cda888671141fdfa7b108de8e928d94 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_b8b25f363e5a8a2dd69ff76d6998c9da = $(`<div id="html_b8b25f363e5a8a2dd69ff76d6998c9da" style="width: 100.0%; height: 100.0%;"><b>Client:</b> REDLAKE SCHOOL DIST #38<br><b>Salesman:</b> Pete Dunn</div>`)[0];
+                popup_4cda888671141fdfa7b108de8e928d94.setContent(html_b8b25f363e5a8a2dd69ff76d6998c9da);
+            
+        
+
+        marker_f5064f4a9c11bfca5fca04bdae3adb1f.bindPopup(popup_4cda888671141fdfa7b108de8e928d94)
+        ;
+
+        
+    
+    
+            var marker_627836709ec284371ecfd89c5ac8e32e = L.marker(
+                [46.72714819999999, -95.7017352],
+                {}
+            ).addTo(map_81ff8ba50940c07804318b411da27821);
+        
+    
+            var icon_fd397c463aebafc75396cd5a013b5f23 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "darkpurple", "prefix": "glyphicon"}
+            );
+            marker_627836709ec284371ecfd89c5ac8e32e.setIcon(icon_fd397c463aebafc75396cd5a013b5f23);
+        
+    
+        var popup_982d91c719ebb0c3ff9adf706e668e93 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_1cf83e614cf772998c2f0d50951ffd52 = $(`<div id="html_1cf83e614cf772998c2f0d50951ffd52" style="width: 100.0%; height: 100.0%;"><b>Client:</b> Anderson Bus Company<br><b>Salesman:</b> Pete Dunn</div>`)[0];
+                popup_982d91c719ebb0c3ff9adf706e668e93.setContent(html_1cf83e614cf772998c2f0d50951ffd52);
+            
+        
+
+        marker_627836709ec284371ecfd89c5ac8e32e.bindPopup(popup_982d91c719ebb0c3ff9adf706e668e93)
+        ;
+
+        
+    
+    
+            var marker_847c6c94e04d133d3a3321dc19a434f8 = L.marker(
+                [48.85084149999999, -95.7562839],
+                {}
+            ).addTo(map_81ff8ba50940c07804318b411da27821);
+        
+    
+            var icon_9073f75b4c639affa8a7e57fb1086d64 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "darkpurple", "prefix": "glyphicon"}
+            );
+            marker_847c6c94e04d133d3a3321dc19a434f8.setIcon(icon_9073f75b4c639affa8a7e57fb1086d64);
+        
+    
+        var popup_63b0a84de8f44c1620b52d5b1d259397 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_d58077ead316684e43af7f0210c35c0d = $(`<div id="html_d58077ead316684e43af7f0210c35c0d" style="width: 100.0%; height: 100.0%;"><b>Client:</b> ROSEAU SCHOOL DIST #682<br><b>Salesman:</b> Pete Dunn</div>`)[0];
+                popup_63b0a84de8f44c1620b52d5b1d259397.setContent(html_d58077ead316684e43af7f0210c35c0d);
+            
+        
+
+        marker_847c6c94e04d133d3a3321dc19a434f8.bindPopup(popup_63b0a84de8f44c1620b52d5b1d259397)
+        ;
+
+        
+    
+    
+            var marker_1797dd36c5bbd50ddaaadcba3cbd547a = L.marker(
+                [46.3509323, -94.22609059999999],
+                {}
+            ).addTo(map_81ff8ba50940c07804318b411da27821);
+        
+    
+            var icon_da119e9be1773b62aedbe7c2155e48ba = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "darkpurple", "prefix": "glyphicon"}
+            );
+            marker_1797dd36c5bbd50ddaaadcba3cbd547a.setIcon(icon_da119e9be1773b62aedbe7c2155e48ba);
+        
+    
+        var popup_f0e18b890f4600bd40fc5ecb983e7646 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_74337a6aa843bf6f19a366c8ac7cc2a9 = $(`<div id="html_74337a6aa843bf6f19a366c8ac7cc2a9" style="width: 100.0%; height: 100.0%;"><b>Client:</b> Reichert Enterprises<br><b>Salesman:</b> Pete Dunn</div>`)[0];
+                popup_f0e18b890f4600bd40fc5ecb983e7646.setContent(html_74337a6aa843bf6f19a366c8ac7cc2a9);
+            
+        
+
+        marker_1797dd36c5bbd50ddaaadcba3cbd547a.bindPopup(popup_f0e18b890f4600bd40fc5ecb983e7646)
+        ;
+
+        
+    
+    
+            var marker_c70813046f0a599e1992e9b87e65d8fa = L.marker(
+                [47.5020361, -94.9301694],
+                {}
+            ).addTo(map_81ff8ba50940c07804318b411da27821);
+        
+    
+            var icon_10b320fef5f033eb13c1b13245ed5f12 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "darkpurple", "prefix": "glyphicon"}
+            );
+            marker_c70813046f0a599e1992e9b87e65d8fa.setIcon(icon_10b320fef5f033eb13c1b13245ed5f12);
+        
+    
+        var popup_eaf3f2a332e6e76ddfdad4261d6ced33 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_d5ea84e1da5f2254fca7497088b0503d = $(`<div id="html_d5ea84e1da5f2254fca7497088b0503d" style="width: 100.0%; height: 100.0%;"><b>Client:</b> BEMIDJI AREA SCHOOLS<br><b>Salesman:</b> Pete Dunn</div>`)[0];
+                popup_eaf3f2a332e6e76ddfdad4261d6ced33.setContent(html_d5ea84e1da5f2254fca7497088b0503d);
+            
+        
+
+        marker_c70813046f0a599e1992e9b87e65d8fa.bindPopup(popup_eaf3f2a332e6e76ddfdad4261d6ced33)
+        ;
+
+        
+    
+    
+            var marker_09c1a62b49902d829090db81732aed0a = L.marker(
+                [48.3577569, -96.3331096],
+                {}
+            ).addTo(map_81ff8ba50940c07804318b411da27821);
+        
+    
+            var icon_5d1ee07fd9b6630976c78ba783e520aa = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "darkpurple", "prefix": "glyphicon"}
+            );
+            marker_09c1a62b49902d829090db81732aed0a.setIcon(icon_5d1ee07fd9b6630976c78ba783e520aa);
+        
+    
+        var popup_eab9d4d78476c95860cfe79a2376ea92 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_a01e58e395239ac57d90e02349412e29 = $(`<div id="html_a01e58e395239ac57d90e02349412e29" style="width: 100.0%; height: 100.0%;"><b>Client:</b> MARSHALL COUNTY CENTRAL SCHOOLS<br><b>Salesman:</b> Pete Dunn</div>`)[0];
+                popup_eab9d4d78476c95860cfe79a2376ea92.setContent(html_a01e58e395239ac57d90e02349412e29);
+            
+        
+
+        marker_09c1a62b49902d829090db81732aed0a.bindPopup(popup_eab9d4d78476c95860cfe79a2376ea92)
+        ;
+
+        
+    
+    
+            var marker_84a4faac1a5ca0c08a28332dd96cfb29 = L.marker(
+                [46.88320299999999, -96.76363200000002],
+                {}
+            ).addTo(map_81ff8ba50940c07804318b411da27821);
+        
+    
+            var icon_8406978fded8fbadefb4660b0c73d6da = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "darkpurple", "prefix": "glyphicon"}
+            );
+            marker_84a4faac1a5ca0c08a28332dd96cfb29.setIcon(icon_8406978fded8fbadefb4660b0c73d6da);
+        
+    
+        var popup_784a7e6fa33516f42c719b9449d46458 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_826c0cd88227876e8d931260d7b789f5 = $(`<div id="html_826c0cd88227876e8d931260d7b789f5" style="width: 100.0%; height: 100.0%;"><b>Client:</b> LAKES AND PRAIRIE COMMUNITY<br><b>Salesman:</b> Pete Dunn</div>`)[0];
+                popup_784a7e6fa33516f42c719b9449d46458.setContent(html_826c0cd88227876e8d931260d7b789f5);
+            
+        
+
+        marker_84a4faac1a5ca0c08a28332dd96cfb29.bindPopup(popup_784a7e6fa33516f42c719b9449d46458)
+        ;
+
+        
+    
+    
+            var marker_268b244d205d516d57f4f524956c0605 = L.marker(
+                [48.7835548, -96.01230179999999],
+                {}
+            ).addTo(map_81ff8ba50940c07804318b411da27821);
+        
+    
+            var icon_c3c8bf87fa8b6a0f2b60759e006d667b = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "darkpurple", "prefix": "glyphicon"}
+            );
+            marker_268b244d205d516d57f4f524956c0605.setIcon(icon_c3c8bf87fa8b6a0f2b60759e006d667b);
+        
+    
+        var popup_60b025b84d92e6fb0a8a0031a3fdf560 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_d8105df6dad2b27322e501aea720362f = $(`<div id="html_d8105df6dad2b27322e501aea720362f" style="width: 100.0%; height: 100.0%;"><b>Client:</b> NORTHWEST COMMUNITY ACTION, INC<br><b>Salesman:</b> Pete Dunn</div>`)[0];
+                popup_60b025b84d92e6fb0a8a0031a3fdf560.setContent(html_d8105df6dad2b27322e501aea720362f);
+            
+        
+
+        marker_268b244d205d516d57f4f524956c0605.bindPopup(popup_60b025b84d92e6fb0a8a0031a3fdf560)
+        ;
+
+        
+    
+    
+            var marker_062c5e55a16e38a9af16193923beede9 = L.marker(
+                [47.2211272, -95.9207794],
+                {}
+            ).addTo(map_81ff8ba50940c07804318b411da27821);
+        
+    
+            var icon_dbc8b19b8dd4955d1fb746f9d2f39103 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "darkpurple", "prefix": "glyphicon"}
+            );
+            marker_062c5e55a16e38a9af16193923beede9.setIcon(icon_dbc8b19b8dd4955d1fb746f9d2f39103);
+        
+    
+        var popup_1d9f8b77af2570a91d1bfbe586937c2c = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_6ae850f884a3b5db5df24d4b5ce79a62 = $(`<div id="html_6ae850f884a3b5db5df24d4b5ce79a62" style="width: 100.0%; height: 100.0%;"><b>Client:</b> Bruce Borgrud<br><b>Salesman:</b> Pete Dunn</div>`)[0];
+                popup_1d9f8b77af2570a91d1bfbe586937c2c.setContent(html_6ae850f884a3b5db5df24d4b5ce79a62);
+            
+        
+
+        marker_062c5e55a16e38a9af16193923beede9.bindPopup(popup_1d9f8b77af2570a91d1bfbe586937c2c)
+        ;
+
+        
+    
+</script>
+</html>

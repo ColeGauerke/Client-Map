@@ -1,0 +1,1 @@
+return render_template('index.html',map_html=map_html)
