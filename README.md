@@ -3,3 +3,5 @@ This program is a python web app that implements Flask to create a map of a busi
 The geocoder I used for this program was the googleV3 API. I experimented with nominatim and bing, but googleV3 was easily the most efficient.
 
 I completed this project for some volunteer work and am currently working to get the full 800+ client list uploaded to a live server for the company and for public access.
+
+The Project requires a personal API key from the google cloud servers
