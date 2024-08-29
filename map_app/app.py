@@ -34,7 +34,7 @@ def index():
     geocodes the address, and formats each point on the map to correspond to the proper color coded pin.
     """
     df = pd.read_excel('small_client_list.xlsx')
-    geolocator = GoogleV3(api_key='AIzaSyCgtO4ya1NB_DzQkKQ_FFWt97NBWoN4tg0')
+    geolocator = GoogleV3(api_key='YOUR UNIQUE API KEY')
     map = folium.Map(location=[37.0902, -95.7129], zoom_start=5)
     salesman_colors = {
         "Bryan Techel": "darkred",
